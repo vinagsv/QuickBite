@@ -60,3 +60,7 @@ Veg-Pulao.jpeg
 Vegetable-Stew.jpeg
 Vegetable-Upma.jpg
 Zinger-Burger.jpeg
+
+
+
+https://github.com/vinagsv/QuickBite/blob/main/server/public/restaurants/Biryani-Zone.jpg?raw=true
