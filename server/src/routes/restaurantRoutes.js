@@ -1,11 +1,16 @@
 import express from "express";
-import { getProperties, getProperty } from "../controllers/propertyController.js"; 
+import {
+  getAllRestaurants,
+  getRestaurantById,
+  getAllFoods,
+  getFoodsByName,
+} from "../controllers/restaurantController.js";
 
+const router = express.Router();
 
-const propertyRouter = express.Router();
+router.get("/restaurants", getAllRestaurants);
+router.get("/restaurant/:id", getRestaurantById);
+router.get("/dishes", getAllFoods);
+router.get("/foods/:foodName", getFoodsByName);
 
-propertyRouter.route("/:id").get(getProperty);
-propertyRouter.route("/").get(getProperties);
-
-
-export { propertyRouter }; 
+export default router;

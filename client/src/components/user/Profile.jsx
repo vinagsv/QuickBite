@@ -1,14 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../Loadingspinner";
 import moment from "moment";
-import { Edit, Lock as LockIcon } from "lucide-react";
+import { Edit, X, ShoppingCart } from "lucide-react";
+
 import { useTheme } from "../../context/ThemeContext";
 
 const Profile = () => {
   const { user, loading } = useSelector((state) => state.user);
   const { isDarkMode } = useTheme();
+  const navigate = useNavigate();
 
   const themeClasses = isDarkMode
     ? "bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white"
@@ -29,6 +31,18 @@ const Profile = () => {
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-purple-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-yellow-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
         </div>
+
+        {/* Close X */}
+        <button
+          onClick={() => navigate("/")}
+          className={`absolute top-4 right-4 p-2 rounded-full ${
+            isDarkMode
+              ? "hover:bg-gray-700 text-gray-400 hover:text-white"
+              : "hover:bg-gray-200 text-gray-600 hover:text-gray-900"
+          } transition-all duration-300`}
+        >
+          <X className="w-6 h-6" />
+        </button>
 
         {loading && <LoadingSpinner />}
 
@@ -75,11 +89,11 @@ const Profile = () => {
                 <span>Edit Profile</span>
               </Link>
               <Link
-                to="/user/updatePassword"
-                className="flex items-center justify-center w-full sm:w-auto space-x-2 py-3 px-6 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-2xl hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                to="/myorders"
+                className="flex items-center justify-center w-full sm:w-auto space-x-2 py-3 px-6 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-2xl hover:from-green-600 hover:to-emerald-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                <LockIcon className="w-5 h-5" />
-                <span>Change Password</span>
+                <ShoppingCart className="w-5 h-5" />
+                <span>View Orders</span>
               </Link>
             </div>
           </div>

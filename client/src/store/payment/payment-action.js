@@ -1,5 +1,3 @@
-// 1.checkout session Creator
-
 import { axiosInstance } from "../../components/utils/axios";
 import { paymentActions } from "./payment-slice";
 
@@ -7,7 +5,7 @@ export const initialCheckoutSession = (paymentData) => async (dispatch) => {
   try {
     dispatch(paymentActions.getCheckedoutRequest());
     const response = await axiosInstance.post(
-      "/api/v1/rent/booking/checkout-session",
+      "/api/v1/app/order/checkout-session",
       paymentData
     );
 
@@ -20,13 +18,11 @@ export const initialCheckoutSession = (paymentData) => async (dispatch) => {
   }
 };
 
-// 2.Payment Verifier
-
 export const verifyPayment = (verifyData) => async (dispatch) => {
   try {
     dispatch(paymentActions.getVerifyRequest());
     const response = await axiosInstance.post(
-      "/api/v1/rent/booking/verify-payment",
+      "/api/v1/app/order/verify-payment",
       verifyData
     );
 

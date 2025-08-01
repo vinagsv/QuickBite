@@ -8,7 +8,7 @@ import {
   updatePassword,
   forgotPassword,
   resetPassword,
-  check
+  check,
 } from "../controllers/authController.js";
 
 const router = express.Router();
@@ -20,6 +20,6 @@ router.route("/updateMe").patch(protect, updateMe);
 router.route("/updateMyPassword").patch(protect, updatePassword);
 router.route("/forgotPassword").post(forgotPassword);
 router.route("/resetPassword/:token").patch(resetPassword);
-router.route("/me").get(protect,check)
+router.route("/me").get(protect, check);
 
 export { router };

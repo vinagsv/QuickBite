@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "../../CSS/Profile.css";
 import { useForm } from "@tanstack/react-form";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userActions } from "../../store/Users/user-slice";
 import { updateUser } from "../../store/Users/user-action";
 import { toast } from "react-toastify";
 import { useTheme } from "../../context/ThemeContext";
+import { X, Lock as LockIcon } from "lucide-react";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -91,8 +91,20 @@ const EditProfile = () => {
       className={`min-h-screen ${themeClasses} flex items-center justify-center px-4 transition-all duration-500`}
     >
       <div
-        className={`border ${cardClasses} backdrop-blur-sm p-8 rounded-3xl shadow-xl max-w-md w-full transition-all duration-500`}
+        className={`relative border ${cardClasses} backdrop-blur-sm p-8 rounded-3xl shadow-xl max-w-md w-full transition-all duration-500`}
       >
+        {/* X button inside the card */}
+        <button
+          onClick={() => navigate("/profile")}
+          className={`absolute top-4 right-4 p-2 rounded-full ${
+            isDarkMode
+              ? "hover:bg-gray-700 text-gray-400 hover:text-white"
+              : "hover:bg-gray-200 text-gray-600 hover:text-gray-900"
+          } transition-all duration-300`}
+        >
+          <X className="w-6 h-6" />
+        </button>
+
         <h1 className="text-3xl font-bold mb-8 bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent text-center">
           Update Profile
         </h1>
@@ -156,10 +168,19 @@ const EditProfile = () => {
 
           <button
             type="submit"
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 transition-all duration-300 font-semibold shadow-lg hover:scale-105"
+            style={{ borderRadius: "18px" }}
+            className="w-full py-3 rounded-2xl mb-4 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 transition-all duration-300 font-semibold shadow-lg hover:scale-105"
           >
             Update
           </button>
+
+          <Link
+            to="/user/updatePassword"
+            className="flex items-center justify-center w-full py-3 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600 transition-all duration-300 font-semibold shadow-lg hover:scale-105"
+          >
+            <LockIcon className="w-5 h-5 mr-2" />
+            <span>Change Password</span>
+          </Link>
         </form>
       </div>
     </div>

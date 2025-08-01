@@ -56,7 +56,7 @@ const UpdatePassword = () => {
         className={`${cardClasses} p-8 rounded-3xl shadow-xl max-w-md w-full relative`}
       >
         <button
-          onClick={() => navigate("/profile")}
+          onClick={() => navigate("/editprofile")}
           className={`absolute top-4 right-4 p-2 rounded-full ${
             isDarkMode
               ? "hover:bg-gray-700 text-gray-400 hover:text-white"

@@ -1,23 +1,35 @@
-import { Property } from "../models/propertyModel.js"; 
-import { APIFeatures } from "../utils/APIFeatures.js";
-import imagekit from "../utils/imagekitIO.js";
+import Restaurant from "../models/restaurantModel.js";
 
-const getProperty = async (req, res) => {
+const getAllRestaurants = async (req, res) => {
   try {
-    const property = await Property.findById(req.params.id);
+    const restaurants = await Restaurant.find();
+    res.status(200).json({
+      status: "success",
+      data: restaurants,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Failed to fetch restaurants",
+      error: error.message,
+    });
+  }
+};
 
-    if (property) {
-      return res.status(200).json({
+const getRestaurantById = async (req, res) => {
+  try {
+    const restaurant = await Restaurant.findById(req.params.id);
+    if (restaurant) {
+      res.status(200).json({
         status: "success",
-        data: property,
+        data: restaurant,
+      });
+    } else {
+      res.status(404).json({
+        status: "fail",
+        message: "Restaurant not found",
       });
     }
-
-    res.status(404).json({
-      status: "fail",
-      message: "Property not found",
-    });
-
   } catch (error) {
     res.status(500).json({
       status: "error",
@@ -27,104 +39,64 @@ const getProperty = async (req, res) => {
   }
 };
 
-const createProperty = async (req, res) => {
+const getAllFoods = async (req, res) => {
   try {
-    const {
-      propertyName,
-      description,
-      propertyType,
-      roomType,
-      extraInfo,
-      address,
-      amenities,
-      checkInTime,
-      checkOutTime,
-      maximumGuest,
-      price,
-      images,
-    } = req.body; 
+    const restaurants = await Restaurant.find();
+    const allFoods = restaurants.flatMap((rest) =>
+      rest.menu.map((item) => ({
+        ...item.toObject(),
+        restaurantId: rest._id,
+        restaurantName: rest.name,
+      }))
+    );
 
-    
-    const uploadedImages = [];
-
-    for (const image of images) {
-      const result = await imagekit.upload({
-        file: image.url, 
-        fileName: `property_${Date.now()}.jpg`,
-        folder: "property_images",
-      });
-
-      uploadedImages.push({
-        url: result.url,
-        public_id: result.fileId,
-      });
-    }
-
-    
-    const newProperty = await Property.create({
-      propertyName,
-      description,
-      propertyType,
-      roomType,
-      extraInfo,
-      address,
-      amenities,
-      checkInTime,
-      checkOutTime,
-      maximumGuest,
-      price,
-      images: uploadedImages,
-      userId: req.userId, 
-    });
-
-    
-    res.status(201).json({
+    res.status(200).json({
       status: "success",
-      data: newProperty,
+      total: allFoods.length,
+      data: allFoods,
     });
   } catch (error) {
     res.status(500).json({
       status: "error",
-      message: "Failed to create property",
+      message: "Failed to fetch foods",
       error: error.message,
     });
   }
 };
 
-const getProperties = async(req,res)=>{
-    try {
-        const features = new APIFeatures(Property.find(),req.query).filter().search().paginate();
+const getFoodsByName = async (req, res) => {
+  try {
+    const foodName = req.params.foodName.toLowerCase();
+    const restaurants = await Restaurant.find();
+    const matchedFoods = restaurants.flatMap((rest) =>
+      rest.menu
+        .filter((item) => item.name.toLowerCase().includes(foodName))
+        .map((item) => ({
+          ...item.toObject(),
+          restaurantId: rest._id,
+          restaurantName: rest.name,
+        }))
+    );
 
-        const allProperties = await Property.find();
-        const doc = await features.query;
-
-res.status(200).json({
-    status:"sucess",
-    no_of_responses: doc.length,
-    all_properites:allProperties.length,
-    data:doc,
-});
-    } catch (error) {
-        console.error("Error sreaching Properties:" , error);
-        res.status(500).json({status:"fail", error:"internal server Error"})
-        
+    if (matchedFoods.length === 0) {
+      return res.status(404).json({
+        status: "fail",
+        message: "No matching food items found",
+      });
     }
+
+    res.status(200).json({
+      status: "success",
+      total: matchedFoods.length,
+      data: matchedFoods,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Error retrieving foods",
+      error: error.message,
+    });
+  }
 };
 
-const getUsersProperties =async(req,res)=>{
-    try {
-        const userId = req.user._id;
-        const property = await Property.find({userId});
-        res.status(200).json({
-            status:"succuess",
-            data:property,
-        });
-    } catch (error) {
-        console.error("Error fetching Properties:" , error);
-        res.status(500).json({status:"fail", error:"Error fetching"})
-        
-    }
-}
-
-
-export { getProperty ,createProperty, getProperties,getUsersProperties};
+export { getAllRestaurants, getRestaurantById, getAllFoods, getFoodsByName };

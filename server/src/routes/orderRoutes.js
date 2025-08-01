@@ -2,25 +2,23 @@ import express from "express";
 import { protect } from "../controllers/authController.js";
 import {
   getCheckOutSession,
-  getUserBookings,
-  verifyPaymentAndCreateBooking,
-  getBookingDetails,
-} from "../controllers/bookingController.js";
+  verifyPaymentAndCreateOrder,
+  getUserOrders,
+  getOrderDetails,
+} from "../controllers/orderController.js";
 
-const bookingRouter = express.Router();
+const orderRouter = express.Router();
 
-// get all the bookings made by current user
-bookingRouter.get("/", protect, getUserBookings);
+// Get all orders made by the current user
+orderRouter.get("/", protect, getUserOrders);
 
-// get details of specific booking using bookingId
-bookingRouter.get("/:bookingId", protect, getBookingDetails);
+// Get details of a specific order using orderId
+orderRouter.get("/:orderId", protect, getOrderDetails);
 
-// create an new booking (must be logged in)
-bookingRouter
-  .route("/verify-payment")
-  .post(protect, verifyPaymentAndCreateBooking);
+// Create a new order (must be logged in)
+orderRouter.route("/verify-payment").post(protect, verifyPaymentAndCreateOrder);
 
-// get a razorpay checkout session
-bookingRouter.post("/checkout-session", protect, getCheckOutSession);
+// Get a Razorpay checkout session
+orderRouter.post("/checkout-session", protect, getCheckOutSession);
 
-export { bookingRouter };
+export { orderRouter };

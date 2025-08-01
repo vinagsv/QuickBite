@@ -1,0 +1,1002 @@
+[
+  {
+    "_id": "64f1a1c23a1a4c001b7e0001",
+    "name": "Shiv Sagar Restaurant",
+    "description": "Pure vegetarian South Indian restaurant.",
+    "location": "Koramangala, Bangalore",
+    "image": "https://example.com/images/shiv-sagar.jpg",
+    "rating": 4.4,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e0101",
+        "name": "Masala Dosa",
+        "description": "Crispy dosa with potato masala.",
+        "price": 60,
+        "image": "https://example.com/images/masala-dosa.jpg",
+        "ingredients": "veg",
+        "rating": 4.6
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0102",
+        "name": "Idli",
+        "description": "Soft steamed rice cakes.",
+        "price": 30,
+        "image": "https://example.com/images/idli.jpg",
+        "ingredients": "veg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0103",
+        "name": "Vada",
+        "description": "Crispy fried lentil donuts.",
+        "price": 35,
+        "image": "https://example.com/images/vada.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0104",
+        "name": "Uttapam",
+        "description": "Thick pancake with onion and tomato toppings.",
+        "price": 70,
+        "image": "https://example.com/images/uttapam.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0105",
+        "name": "Pongal",
+        "description": "Savory rice and lentil porridge with spices.",
+        "price": 50,
+        "image": "https://example.com/images/pongal.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0106",
+        "name": "Rava Idli",
+        "description": "Steamed semolina cakes with vegetables.",
+        "price": 40,
+        "image": "https://example.com/images/rava-idli.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0107",
+        "name": "Vegetable Upma",
+        "description": "Semolina cooked with vegetables and spices.",
+        "price": 45,
+        "image": "https://example.com/images/upma.jpg",
+        "ingredients": "veg",
+        "rating": 3.8
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0108",
+        "name": "Filter Coffee",
+        "description": "Traditional South Indian coffee.",
+        "price": 20,
+        "image": "https://example.com/images/filter-coffee.jpg",
+        "ingredients": "veg",
+        "rating": 4.7
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0109",
+        "name": "Coconut Chutney",
+        "description": "Fresh coconut chutney with spices.",
+        "price": 15,
+        "image": "https://example.com/images/coconut-chutney.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0110",
+        "name": "Sambar",
+        "description": "Lentil stew with vegetables.",
+        "price": 25,
+        "image": "https://example.com/images/sambar.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      }
+    ]
+  },
+  {
+    "_id": "64f1a1c23a1a4c001b7e0002",
+    "name": "Empire Restaurant",
+    "description": "Famous for non-veg tandoori and biryani.",
+    "location": "Church Street, Bangalore",
+    "image": "https://example.com/images/empire.jpg",
+    "rating": 4.5,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e0201",
+        "name": "Chicken Biryani",
+        "description": "Spicy biryani with chicken leg pieces.",
+        "price": 180,
+        "image": "https://example.com/images/chicken-biryani.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.6
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0202",
+        "name": "Tandoori Chicken",
+        "description": "Grilled chicken marinated in yogurt and spices.",
+        "price": 200,
+        "image": "https://example.com/images/tandoori-chicken.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.7
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0203",
+        "name": "Chicken Tikka",
+        "description": "Boneless chicken grilled with spices.",
+        "price": 190,
+        "image": "https://example.com/images/chicken-tikka.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0204",
+        "name": "Butter Naan",
+        "description": "Soft flatbread with butter.",
+        "price": 40,
+        "image": "https://example.com/images/butter-naan.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0205",
+        "name": "Chicken Curry",
+        "description": "Spicy chicken curry with rich gravy.",
+        "price": 170,
+        "image": "https://example.com/images/chicken-curry.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0206",
+        "name": "Paneer Butter Masala",
+        "description": "Creamy paneer in tomato-based gravy.",
+        "price": 150,
+        "image": "https://example.com/images/paneer-butter-masala.jpg",
+        "ingredients": "veg",
+        "rating": 4.5
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0207",
+        "name": "Mutton Rogan Josh",
+        "description": "Tender mutton in aromatic curry.",
+        "price": 220,
+        "image": "https://example.com/images/mutton-rogan-josh.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0208",
+        "name": "Veg Pulao",
+        "description": "Mild rice dish with mixed vegetables.",
+        "price": 90,
+        "image": "https://example.com/images/veg-pulao.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0209",
+        "name": "Chicken 65",
+        "description": "Spicy fried chicken bites.",
+        "price": 160,
+        "image": "https://example.com/images/chicken-65.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0210",
+        "name": "Dal Tadka",
+        "description": "Lentils tempered with spices.",
+        "price": 100,
+        "image": "https://example.com/images/dal-tadka.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      }
+    ]
+  },
+  {
+    "_id": "64f1a1c23a1a4c001b7e0003",
+    "name": "Paradise Biryani",
+    "description": "Hyderabadi style biryani and kebabs.",
+    "location": "Indiranagar, Bangalore",
+    "image": "https://example.com/images/paradise.jpg",
+    "rating": 4.6,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e0301",
+        "name": "Mutton Biryani",
+        "description": "Tender mutton with long grain rice.",
+        "price": 220,
+        "image": "https://example.com/images/mutton-biryani.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.7
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0302",
+        "name": "Paneer Tikka",
+        "description": "Grilled paneer cubes in masala.",
+        "price": 140,
+        "image": "https://example.com/images/paneer-tikka.jpg",
+        "ingredients": "veg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0303",
+        "name": "Chicken Kebab",
+        "description": "Juicy grilled chicken skewers.",
+        "price": 180,
+        "image": "https://example.com/images/chicken-kebab.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0304",
+        "name": "Veg Biryani",
+        "description": "Aromatic rice with mixed vegetables.",
+        "price": 120,
+        "image": "https://example.com/images/veg-biryani.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0305",
+        "name": "Chicken 65",
+        "description": "Spicy fried chicken bites.",
+        "price": 160,
+        "image": "https://example.com/images/chicken-65.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.5
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0306",
+        "name": "Paneer Butter Masala",
+        "description": "Creamy paneer in tomato-based gravy.",
+        "price": 150,
+        "image": "https://example.com/images/paneer-butter-masala.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0307",
+        "name": "Naan",
+        "description": "Soft Indian flatbread.",
+        "price": 35,
+        "image": "https://example.com/images/naan.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0308",
+        "name": "Mutton Korma",
+        "description": "Rich mutton curry with creamy sauce.",
+        "price": 230,
+        "image": "https://example.com/images/mutton-korma.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0309",
+        "name": "Dal Makhani",
+        "description": "Creamy lentils with butter and spices.",
+        "price": 110,
+        "image": "https://example.com/images/dal-makhani.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0310",
+        "name": "Raita",
+        "description": "Yogurt with cucumber and spices.",
+        "price": 30,
+        "image": "https://example.com/images/raita.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      }
+    ]
+  },
+  {
+    "_id": "64f1a1c23a1a4c001b7e0004",
+    "name": "Thalassery Kitchen",
+    "description": "Authentic Kerala cuisine restaurant.",
+    "location": "HSR Layout, Bangalore",
+    "image": "https://example.com/images/thalassery.jpg",
+    "rating": 4.3,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e0401",
+        "name": "Malabar Parotta",
+        "description": "Layered Kerala-style parotta.",
+        "price": 25,
+        "image": "https://example.com/images/parotta.jpg",
+        "ingredients": "veg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0402",
+        "name": "Chicken Fry",
+        "description": "Spicy chicken fried with Kerala spices.",
+        "price": 180,
+        "image": "https://example.com/images/chicken-fry.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.6
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0403",
+        "name": "Fish Curry",
+        "description": "Tangy fish curry with coconut milk.",
+        "price": 200,
+        "image": "https://example.com/images/fish-curry.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.5
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0404",
+        "name": "Vegetable Stew",
+        "description": "Mild coconut-based vegetable curry.",
+        "price": 100,
+        "image": "https://example.com/images/veg-stew.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0405",
+        "name": "Appam",
+        "description": "Soft rice pancakes with crispy edges.",
+        "price": 30,
+        "image": "https://example.com/images/appam.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0406",
+        "name": "Prawn Masala",
+        "description": "Spicy prawn curry with coastal flavors.",
+        "price": 220,
+        "image": "https://example.com/images/prawn-masala.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0407",
+        "name": "Banana Fritters",
+        "description": "Sweet fried banana snacks.",
+        "price": 50,
+        "image": "https://example.com/images/banana-fritters.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0408",
+        "name": "Chicken Biryani",
+        "description": "Spicy biryani with chicken leg pieces.",
+        "price": 180,
+        "image": "https://example.com/images/chicken-biryani.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0409",
+        "name": "Coconut Chutney",
+        "description": "Fresh coconut chutney with spices.",
+        "price": 15,
+        "image": "https://example.com/images/coconut-chutney.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0410",
+        "name": "Sambar",
+        "description": "Lentil stew with vegetables.",
+        "price": 25,
+        "image": "https://example.com/images/sambar.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      }
+    ]
+  },
+  {
+    "_id": "64f1a1c23a1a4c001b7e0005",
+    "name": "Sukh Sagar",
+    "description": "Popular veg restaurant chain in South India.",
+    "location": "MG Road, Bangalore",
+    "image": "https://example.com/images/sukh-sagar.jpg",
+    "rating": 4.2,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e0501",
+        "name": "Veg Pulao",
+        "description": "Mild rice dish with mixed vegetables.",
+        "price": 90,
+        "image": "https://example.com/images/veg-pulao.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0502",
+        "name": "Chole Bhature",
+        "description": "Spicy chickpeas served with fried bread.",
+        "price": 100,
+        "image": "https://example.com/images/chole-bhature.jpg",
+        "ingredients": "veg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0503",
+        "name": "Masala Dosa",
+        "description": "Crispy dosa with potato masala.",
+        "price": 60,
+        "image": "https://example.com/images/masala-dosa.jpg",
+        "ingredients": "veg",
+        "rating": 4.5
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0504",
+        "name": "Pav Bhaji",
+        "description": "Spicy vegetable mash with buttered buns.",
+        "price": 80,
+        "image": "https://example.com/images/pav-bhaji.jpg",
+        "ingredients": "veg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0505",
+        "name": "Paneer Butter Masala",
+        "description": "Creamy paneer in tomato-based gravy.",
+        "price": 150,
+        "image": "https://example.com/images/paneer-butter-masala.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0506",
+        "name": "Idli",
+        "description": "Soft steamed rice cakes.",
+        "price": 30,
+        "image": "https://example.com/images/idli.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0507",
+        "name": "Vada",
+        "description": "Crispy fried lentil donuts.",
+        "price": 35,
+        "image": "https://example.com/images/vada.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0508",
+        "name": "Coconut Chutney",
+        "description": "Fresh coconut chutney with spices.",
+        "price": 15,
+        "image": "https://example.com/images/coconut-chutney.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0509",
+        "name": "Sambar",
+        "description": "Lentil stew with vegetables.",
+        "price": 25,
+        "image": "https://example.com/images/sambar.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0510",
+        "name": "Filter Coffee",
+        "description": "Traditional South Indian coffee.",
+        "price": 20,
+        "image": "https://example.com/images/filter-coffee.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      }
+    ]
+  },
+  {
+    "_id": "64f1a1c23a1a4c001b7e0006",
+    "name": "Nagarjuna",
+    "description": "Authentic Andhra meals and biryani.",
+    "location": "Residency Road, Bangalore",
+    "image": "https://example.com/images/nagarjuna.jpg",
+    "rating": 4.5,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e0601",
+        "name": "Andhra Meals",
+        "description": "Spicy vegetarian thali with pickles and curries.",
+        "price": 130,
+        "image": "https://example.com/images/andhra-meals.jpg",
+        "ingredients": "veg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0602",
+        "name": "Andhra Chicken Curry",
+        "description": "Fiery chicken curry with Andhra spices.",
+        "price": 180,
+        "image": "https://example.com/images/andhra-chicken.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.6
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0603",
+        "name": "Chicken Biryani",
+        "description": "Spicy biryani with chicken leg pieces.",
+        "price": 180,
+        "image": "https://example.com/images/chicken-biryani.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.5
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0604",
+        "name": "Veg Pulao",
+        "description": "Mild rice dish with mixed vegetables.",
+        "price": 90,
+        "image": "https://example.com/images/veg-pulao.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0605",
+        "name": "Gongura Chicken",
+        "description": "Chicken cooked with tangy gongura leaves.",
+        "price": 190,
+        "image": "https://example.com/images/gongura-chicken.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0606",
+        "name": "Dal Tadka",
+        "description": "Lentils tempered with spices.",
+        "price": 100,
+        "image": "https://example.com/images/dal-tadka.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0607",
+        "name": "Rasam",
+        "description": "Spicy South Indian soup with tamarind.",
+        "price": 30,
+        "image": "https://example.com/images/rasam.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0608",
+        "name": "Prawn Fry",
+        "description": "Crispy fried prawns with spices.",
+        "price": 210,
+        "image": "https://example.com/images/prawn-fry.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0609",
+        "name": "Paneer Butter Masala",
+        "description": "Creamy paneer in tomato-based gravy.",
+        "price": 150,
+        "image": "https://example.com/images/paneer-butter-masala.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0610",
+        "name": "Sambar",
+        "description": "Lentil stew with vegetables.",
+        "price": 25,
+        "image": "https://example.com/images/sambar.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      }
+    ]
+  },
+  {
+    "_id": "64f1a1c23a1a4c001b7e0007",
+    "name": "Truffles",
+    "description": "Casual cafe with burgers and pasta.",
+    "location": "Kalyan Nagar, Bangalore",
+    "image": "https://example.com/images/truffles.jpg",
+    "rating": 4.7,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e0701",
+        "name": "Chicken Burger",
+        "description": "Grilled chicken patty with sauces.",
+        "price": 160,
+        "image": "https://example.com/images/chicken-burger.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.6
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0702",
+        "name": "Veg Alfredo Pasta",
+        "description": "Creamy white sauce pasta with veggies.",
+        "price": 150,
+        "image": "https://example.com/images/veg-alfredo.jpg",
+        "ingredients": "veg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0703",
+        "name": "Veg Burger",
+        "description": "Vegetable patty with fresh lettuce and sauce.",
+        "price": 120,
+        "image": "https://example.com/images/veg-burger.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0704",
+        "name": "Chicken Wings",
+        "description": "Crispy fried chicken wings with sauce.",
+        "price": 180,
+        "image": "https://example.com/images/chicken-wings.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0705",
+        "name": "French Fries",
+        "description": "Crispy golden fries with seasoning.",
+        "price": 80,
+        "image": "https://example.com/images/french-fries.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0706",
+        "name": "Pasta Arrabbiata",
+        "description": "Spicy tomato sauce pasta with herbs.",
+        "price": 140,
+        "image": "https://example.com/images/pasta-arrabbiata.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0707",
+        "name": "Chicken Pizza",
+        "description": "Pizza with chicken and cheese toppings.",
+        "price": 200,
+        "image": "https://example.com/images/chicken-pizza.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0708",
+        "name": "Margherita Pizza",
+        "description": "Classic pizza with tomato and mozzarella.",
+        "price": 150,
+        "image": "https://example.com/images/margherita-pizza.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0709",
+        "name": "Caesar Salad",
+        "description": "Fresh lettuce with croutons and dressing.",
+        "price": 100,
+        "image": "https://example.com/images/caesar-salad.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0710",
+        "name": "Iced Tea",
+        "description": "Refreshing lemon-flavored iced tea.",
+        "price": 50,
+        "image": "https://example.com/images/iced-tea.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      }
+    ]
+  },
+  {
+    "_id": "64f1a1c23a1a4c001b7e0008",
+    "name": "Biryani Zone",
+    "description": "Hyderabadi biryani specialists.",
+    "location": "BTM Layout, Bangalore",
+    "image": "https://example.com/images/biryani-zone.jpg",
+    "rating": 4.1,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e0801",
+        "name": "Egg Biryani",
+        "description": "Biryani rice with boiled eggs and spices.",
+        "price": 130,
+        "image": "https://example.com/images/egg-biryani.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0802",
+        "name": "Paneer 65",
+        "description": "Spicy fried paneer bites.",
+        "price": 120,
+        "image": "https://example.com/images/paneer-65.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0803",
+        "name": "Chicken Biryani",
+        "description": "Spicy biryani with chicken leg pieces.",
+        "price": 180,
+        "image": "https://example.com/images/chicken-biryani.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.5
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0804",
+        "name": "Veg Biryani",
+        "description": "Aromatic rice with mixed vegetables.",
+        "price": 120,
+        "image": "https://example.com/images/veg-biryani.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0805",
+        "name": "Mutton Biryani",
+        "description": "Tender mutton with long grain rice.",
+        "price": 220,
+        "image": "https://example.com/images/mutton-biryani.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.6
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0806",
+        "name": "Paneer Tikka",
+        "description": "Grilled paneer cubes in masala.",
+        "price": 140,
+        "image": "https://example.com/images/paneer-tikka.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0807",
+        "name": "Chicken Kebab",
+        "description": "Juicy grilled chicken skewers.",
+        "price": 180,
+        "image": "https://example.com/images/chicken-kebab.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0808",
+        "name": "Raita",
+        "description": "Yogurt with cucumber and spices.",
+        "price": 30,
+        "image": "https://example.com/images/raita.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0809",
+        "name": "Naan",
+        "description": "Soft Indian flatbread.",
+        "price": 35,
+        "image": "https://example.com/images/naan.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0810",
+        "name": "Chicken 65",
+        "description": "Spicy fried chicken bites.",
+        "price": 160,
+        "image": "https://example.com/images/chicken-65.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.4
+      }
+    ]
+  },
+  {
+    "_id": "64f1a1c23a1a4c001b7e0009",
+    "name": "Adyar Ananda Bhavan",
+    "description": "Traditional South Indian veg meals and snacks.",
+    "location": "Rajajinagar, Bangalore",
+    "image": "https://example.com/images/a2b.jpg",
+    "rating": 4.4,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e0901",
+        "name": "Rava Dosa",
+        "description": "Crispy semolina dosa with chutney.",
+        "price": 65,
+        "image": "https://example.com/images/rava-dosa.jpg",
+        "ingredients": "veg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0902",
+        "name": "Kesari Bath",
+        "description": "Sweet semolina dessert with ghee and saffron.",
+        "price": 45,
+        "image": "https://example.com/images/kesari-bath.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0903",
+        "name": "Masala Dosa",
+        "description": "Crispy dosa with potato masala.",
+        "price": 60,
+        "image": "https://example.com/images/masala-dosa.jpg",
+        "ingredients": "veg",
+        "rating": 4.6
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0904",
+        "name": "Idli",
+        "description": "Soft steamed rice cakes.",
+        "price": 30,
+        "image": "https://example.com/images/idli.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0905",
+        "name": "Vada",
+        "description": "Crispy fried lentil donuts.",
+        "price": 35,
+        "image": "https://example.com/images/vada.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0906",
+        "name": "Pongal",
+        "description": "Savory rice and lentil porridge with spices.",
+        "price": 50,
+        "image": "https://example.com/images/pongal.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0907",
+        "name": "Coconut Chutney",
+        "description": "Fresh coconut chutney with spices.",
+        "price": 15,
+        "image": "https://example.com/images/coconut-chutney.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0908",
+        "name": "Sambar",
+        "description": "Lentil stew with vegetables.",
+        "price": 25,
+        "image": "https://example.com/images/sambar.jpg",
+        "ingredients": "veg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0909",
+        "name": "Filter Coffee",
+        "description": "Traditional South Indian coffee.",
+        "price": 20,
+        "image": "https://example.com/images/filter-coffee.jpg",
+        "ingredients": "veg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e0910",
+        "name": "Uttapam",
+        "description": "Thick pancake with onion and tomato toppings.",
+        "price": 70,
+        "image": "https://example.com/images/uttapam.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      }
+    ]
+  },
+  {
+    "_id": "64f1a1c23a1a4c001b7e0010",
+    "name": "KFC",
+    "description": "Popular global fast food chain known for fried chicken.",
+    "location": "JP Nagar, Bangalore",
+    "image": "https://example.com/images/kfc.jpg",
+    "rating": 4.0,
+    "menu": [
+      {
+        "_id": "64f1a1c23a1a4c001b7e1001",
+        "name": "Zinger Burger",
+        "description": "Crispy chicken burger with lettuce and mayo.",
+        "price": 180,
+        "image": "https://example.com/images/zinger.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.5
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e1002",
+        "name": "Popcorn Chicken",
+        "description": "Bite-sized crispy chicken pieces.",
+        "price": 160,
+        "image": "https://example.com/images/popcorn.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.3
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e1003",
+        "name": "Chicken Wings",
+        "description": "Crispy fried chicken wings with sauce.",
+        "price": 180,
+        "image": "https://example.com/images/chicken-wings.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e1004",
+        "name": "French Fries",
+        "description": "Crispy golden fries with seasoning.",
+        "price": 80,
+        "image": "https://example.com/images/french-fries.jpg",
+        "ingredients": "veg",
+        "rating": 4.2
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e1005",
+        "name": "Chicken Strips",
+        "description": "Tender chicken strips with dipping sauce.",
+        "price": 170,
+        "image": "https://example.com/images/chicken-strips.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.1
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e1006",
+        "name": "Veg Burger",
+        "description": "Vegetable patty with fresh lettuce and sauce.",
+        "price": 120,
+        "image": "https://example.com/images/veg-burger.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e1007",
+        "name": "Coleslaw",
+        "description": "Creamy cabbage and carrot salad.",
+        "price": 60,
+        "image": "https://example.com/images/coleslaw.jpg",
+        "ingredients": "veg",
+        "rating": 3.8
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e1008",
+        "name": "Chicken Bucket",
+        "description": "Assorted fried chicken pieces.",
+        "price": 350,
+        "image": "https://example.com/images/chicken-bucket.jpg",
+        "ingredients": "nonveg",
+        "rating": 4.4
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e1009",
+        "name": "Mashed Potatoes",
+        "description": "Creamy potatoes with gravy.",
+        "price": 90,
+        "image": "https://example.com/images/mashed-potatoes.jpg",
+        "ingredients": "veg",
+        "rating": 4.0
+      },
+      {
+        "_id": "64f1a1c23a1a4c001b7e1010",
+        "name": "Iced Tea",
+        "description": "Refreshing lemon-flavored iced tea.",
+        "price": 50,
+        "image": "https://example.com/images/iced-tea.jpg",
+        "ingredients": "veg",
+        "rating": 3.9
+      }
+    ]
+  }
+]

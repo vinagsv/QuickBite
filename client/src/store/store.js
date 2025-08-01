@@ -1,17 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
+import restaurantReducer from "./Restaurant/restaurant-slice";
 import userSlice from "./Users/user-slice";
-// import propertySlice from "./Property/property-slice";
-// import PropertyDetailsSlice from "./PropertyDetails/PropertyDetails-slice";
-// import paymentSlice from "./payment/payment-slice";
-// import bookingSlice from "./booking/booking-slice";
+import paymentSlice from "./payment/payment-slice";
+import orderSlice from "./order/order-slice";
 
 const store = configureStore({
   reducer: {
+    restaurant: restaurantReducer,
     user: userSlice.reducer,
-    // properties: propertySlice.reducer,
-    // propertydetails: PropertyDetailsSlice.reducer,
-    // payment: paymentSlice.reducer,
-    // booking: bookingSlice.reducer,
+    payment: paymentSlice.reducer,
+    order: orderSlice.reducer,
   },
 });
 

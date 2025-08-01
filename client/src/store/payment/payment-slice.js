@@ -2,14 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   paymentDetails: {
-    checkinDate: null,
-    checkoutDate: null,
+    restaurantId: null,
+    restaurantName: "",
+    items: [],
     totalPrice: 0,
-    propertyName: "",
-    address: "",
-    maximumGuest: 0,
-    images: "",
-    nights: 0,
+    deliveryAddress: "",
   },
   loading: false,
   error: null,
