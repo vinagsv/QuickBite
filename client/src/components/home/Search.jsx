@@ -32,11 +32,23 @@ const Search = ({ isDarkMode }) => {
   useEffect(() => {
     if (showSuggestions && inputRef.current) {
       const rect = inputRef.current.getBoundingClientRect();
-      setSuggestionPosition({
-        top: rect.bottom + window.scrollY + 4, // 4px gap
-        left: rect.left + window.scrollX,
-        width: rect.width,
-      });
+      const isMobile = window.innerWidth < 768; // md breakpoint
+
+      if (isMobile) {
+        // On mobile, use full width with padding
+        setSuggestionPosition({
+          top: rect.bottom + window.scrollY + 4,
+          left: 16, // 1rem padding
+          width: window.innerWidth - 32, // full width minus padding
+        });
+      } else {
+        // Desktop behavior unchanged
+        setSuggestionPosition({
+          top: rect.bottom + window.scrollY + 4,
+          left: rect.left + window.scrollX,
+          width: rect.width,
+        });
+      }
     }
   }, [showSuggestions, query]);
 
@@ -54,14 +66,38 @@ const Search = ({ isDarkMode }) => {
       }
     };
 
+    const handleResize = () => {
+      if (showSuggestions) {
+        // Update position on resize
+        if (inputRef.current) {
+          const rect = inputRef.current.getBoundingClientRect();
+          const isMobile = window.innerWidth < 768;
+
+          if (isMobile) {
+            setSuggestionPosition({
+              top: rect.bottom + window.scrollY + 4,
+              left: 16,
+              width: window.innerWidth - 32,
+            });
+          } else {
+            setSuggestionPosition({
+              top: rect.bottom + window.scrollY + 4,
+              left: rect.left + window.scrollX,
+              width: rect.width,
+            });
+          }
+        }
+      }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("scroll", handleScroll, true);
-    window.addEventListener("resize", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("scroll", handleScroll, true);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, [showSuggestions]);
 
@@ -186,7 +222,7 @@ const Search = ({ isDarkMode }) => {
               e.preventDefault();
               e.stopPropagation();
             }}
-            className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-all duration-200 first:rounded-t-lg last:rounded-b-lg ${suggestionItemClasses}`}
+            className={`flex items-center gap-3 px-3 sm:px-4 py-3 cursor-pointer transition-all duration-200 first:rounded-t-lg last:rounded-b-lg ${suggestionItemClasses}`}
             style={{ userSelect: "none" }}
           >
             {item.type === "restaurant" ? (
@@ -194,9 +230,11 @@ const Search = ({ isDarkMode }) => {
             ) : (
               <Utensils className="w-4 h-4 text-green-500 flex-shrink-0" />
             )}
-            <span className="truncate flex-1">{item.name}</span>
+            <span className="truncate flex-1 text-sm sm:text-base">
+              {item.name}
+            </span>
             <span
-              className={`text-xs px-2 py-1 rounded-full ${
+              className={`text-xs px-2 py-1 rounded-full flex-shrink-0 ${
                 item.type === "restaurant"
                   ? "bg-blue-500/10 text-blue-500"
                   : "bg-green-500/10 text-green-500"
@@ -213,7 +251,7 @@ const Search = ({ isDarkMode }) => {
 
   if (loading && (!allDishes || allDishes.length === 0)) {
     return (
-      <div className="relative w-80 flex items-center justify-center">
+      <div className="relative w-full md:w-80 flex items-center justify-center">
         <Loader2 className="w-6 h-6 animate-spin text-orange-500" />
       </div>
     );
@@ -221,27 +259,27 @@ const Search = ({ isDarkMode }) => {
 
   if (error) {
     return (
-      <div ref={searchRef} className="relative w-80">
+      <div ref={searchRef} className="relative w-full md:w-80">
         <div
           ref={inputRef}
-          className={`flex items-center border rounded-2xl px-4 py-2 shadow backdrop-blur-sm ${inputClasses}`}
+          className={`flex items-center border rounded-2xl px-3 sm:px-4 py-2 shadow backdrop-blur-sm ${inputClasses}`}
         >
           <SearchIcon
-            className={`w-5 h-5 mr-2 ${
+            className={`w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0 ${
               isDarkMode ? "text-gray-400" : "text-gray-500"
             }`}
           />
           <input
             type="text"
             placeholder="Search for food or restaurants..."
-            className="w-full outline-none bg-transparent"
+            className="w-full outline-none bg-transparent text-sm sm:text-base"
             value={query}
             onChange={handleInputChange}
             onFocus={handleInputFocus}
           />
         </div>
         <div
-          className={`absolute z-[999999] mt-2 w-full rounded-lg shadow-2xl border backdrop-blur-md p-4 ${suggestionBoxClasses}`}
+          className={`absolute z-[999999] mt-2 w-full rounded-lg shadow-2xl border backdrop-blur-md p-3 sm:p-4 ${suggestionBoxClasses}`}
         >
           <p
             className={`text-sm ${
@@ -252,7 +290,7 @@ const Search = ({ isDarkMode }) => {
           </p>
           <button
             onClick={() => dispatch(fetchAllRestaurants())}
-            className="mt-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl hover:from-orange-600 hover:to-pink-600 transition-all duration-300"
+            className="mt-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl hover:from-orange-600 hover:to-pink-600 transition-all duration-300 text-sm sm:text-base"
           >
             Try Again
           </button>
@@ -262,20 +300,20 @@ const Search = ({ isDarkMode }) => {
   }
 
   return (
-    <div ref={searchRef} className="relative w-80">
+    <div ref={searchRef} className="relative w-full md:w-80">
       <div
         ref={inputRef}
-        className={`flex items-center border rounded-2xl px-4 py-2 shadow backdrop-blur-sm ${inputClasses}`}
+        className={`flex items-center border rounded-2xl px-3 sm:px-4 py-2 shadow backdrop-blur-sm ${inputClasses}`}
       >
         <SearchIcon
-          className={`w-5 h-5 mr-2 ${
+          className={`w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0 ${
             isDarkMode ? "text-gray-400" : "text-gray-500"
           }`}
         />
         <input
           type="text"
           placeholder="Search for food or restaurants..."
-          className="w-full outline-none bg-transparent"
+          className="w-full outline-none bg-transparent text-sm sm:text-base"
           value={query}
           onChange={handleInputChange}
           onFocus={handleInputFocus}

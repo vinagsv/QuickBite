@@ -95,7 +95,7 @@ const FoodHome = () => {
       <div
         className={`min-h-screen ${themeClasses} transition-all duration-500`}
       >
-        <div className="flex items-center justify-center min-h-screen">
+        <div className="flex items-center justify-center min-h-screen px-4">
           <div className="text-center">
             <ChefHat
               className={`w-16 h-16 mx-auto mb-4 ${
@@ -127,22 +127,25 @@ const FoodHome = () => {
 
   return (
     <div className={`min-h-screen ${themeClasses} transition-all duration-500`}>
+      {/* Background decorations - adjusted for mobile */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-orange-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-96 right-10 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-gradient-to-r from-yellow-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-gradient-to-r from-orange-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-64 sm:top-96 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-r from-purple-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-10 sm:bottom-20 left-1/2 w-60 sm:w-80 h-60 sm:h-80 bg-gradient-to-r from-yellow-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Popular Dishes */}
-        <div className="mb-16">
-          <div className="flex justify-between items-center mb-8">
+        <div className="mb-12 sm:mb-16">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl">
-                <Flame className="w-6 h-6 text-white" />
+                <Flame className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold">Popular Dishes</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold">
+                  Popular Dishes
+                </h2>
                 <p
                   className={`text-sm ${
                     isDarkMode ? "text-gray-400" : "text-gray-600"
@@ -153,7 +156,7 @@ const FoodHome = () => {
               </div>
             </div>
             <button
-              className={`flex items-center space-x-2 px-4 py-2 rounded-xl ${
+              className={`flex items-center space-x-2 px-4 py-2 rounded-xl self-start sm:self-auto ${
                 isDarkMode
                   ? "text-gray-400 hover:text-white"
                   : "text-gray-600 hover:text-gray-900"
@@ -165,7 +168,8 @@ const FoodHome = () => {
             </button>
           </div>
 
-          <div className="flex space-x-6 overflow-x-auto pb-4 scrollbar-hide">
+          {/* Mobile: Grid layout, Desktop: Horizontal scroll */}
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:flex md:space-x-6 gap-4 md:gap-0 md:overflow-x-auto md:pb-4 md:scrollbar-hide">
             {popularDishes.map((dish, index) => (
               <div
                 key={dish.id || index}
@@ -174,11 +178,11 @@ const FoodHome = () => {
                     state: { restaurantName: dish.restaurantName },
                   })
                 }
-                className="flex flex-col items-center min-w-[120px] group cursor-pointer"
+                className="flex flex-col items-center md:min-w-[120px] group cursor-pointer"
               >
                 <div className="relative">
                   <div
-                    className={`w-28 h-28 rounded-3xl border-2 ${
+                    className={`w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl sm:rounded-3xl border-2 ${
                       isDarkMode ? "border-gray-700" : "border-gray-300"
                     } overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105`}
                   >
@@ -190,12 +194,12 @@ const FoodHome = () => {
                     />
                   </div>
                   {dish.trending && (
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center">
-                      <Flame className="w-3 h-3 text-white" />
+                    <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center">
+                      <Flame className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
                     </div>
                   )}
                 </div>
-                <span className="mt-3 text-sm font-medium text-center group-hover:text-orange-500 transition-colors duration-300">
+                <span className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-center group-hover:text-orange-500 transition-colors duration-300 line-clamp-2">
                   {dish.name}
                 </span>
               </div>
@@ -205,13 +209,15 @@ const FoodHome = () => {
 
         {/* Popular Restaurants */}
         <div>
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl">
-                <Star className="w-6 h-6 text-white" />
+                <Star className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold">Top Restaurants</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold">
+                  Top Restaurants
+                </h2>
                 <p
                   className={`text-sm ${
                     isDarkMode ? "text-gray-400" : "text-gray-600"
@@ -222,7 +228,7 @@ const FoodHome = () => {
               </div>
             </div>
             <button
-              className={`flex items-center space-x-2 px-4 py-2 rounded-xl ${
+              className={`flex items-center space-x-2 px-4 py-2 rounded-xl self-start sm:self-auto ${
                 isDarkMode
                   ? "text-gray-400 hover:text-white"
                   : "text-gray-600 hover:text-gray-900"
@@ -234,7 +240,7 @@ const FoodHome = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {popularRestaurants.map((rest, index) => (
               <div
                 key={rest.id || index}
@@ -243,11 +249,11 @@ const FoodHome = () => {
                     state: { restaurant: rest },
                   })
                 }
-                className={`p-6 rounded-3xl border ${cardClasses} backdrop-blur-sm hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group`}
+                className={`p-4 sm:p-6 rounded-2xl sm:rounded-3xl border ${cardClasses} backdrop-blur-sm hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group`}
               >
-                <div className="flex items-center space-x-4 mb-4">
+                <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-md">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl overflow-hidden shadow-md">
                       <img
                         src={rest.image}
                         alt={rest.name}
@@ -258,30 +264,30 @@ const FoodHome = () => {
                       />
                     </div>
                     {rest.popular && (
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center">
-                        <Star className="w-3 h-3 text-white" />
+                      <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center">
+                        <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
                       </div>
                     )}
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg group-hover:text-orange-500 transition-colors duration-300">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-base sm:text-lg group-hover:text-orange-500 transition-colors duration-300 truncate">
                       {rest.name}
                     </h3>
-                    <div className="flex items-center space-x-4 mt-2">
+                    <div className="flex items-center space-x-3 sm:space-x-4 mt-2">
                       <div className="flex items-center space-x-1">
-                        <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                        <span className="text-sm font-medium">
+                        <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-yellow-500 fill-current" />
+                        <span className="text-xs sm:text-sm font-medium">
                           {rest.rating}
                         </span>
                       </div>
                       <div className="flex items-center space-x-1">
                         <Clock
-                          className={`w-4 h-4 ${
+                          className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
                             isDarkMode ? "text-gray-400" : "text-gray-500"
                           }`}
                         />
                         <span
-                          className={`text-sm ${
+                          className={`text-xs sm:text-sm ${
                             isDarkMode ? "text-gray-400" : "text-gray-500"
                           }`}
                         >
@@ -298,13 +304,15 @@ const FoodHome = () => {
 
         {/* Empty state for dishes */}
         {!loading && popularDishes.length === 0 && (
-          <div className="text-center py-16">
+          <div className="text-center py-12 sm:py-16 px-4">
             <ChefHat
-              className={`w-16 h-16 mx-auto mb-4 ${
+              className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 ${
                 isDarkMode ? "text-gray-600" : "text-gray-400"
               }`}
             />
-            <h3 className="text-xl font-medium mb-2">No dishes available</h3>
+            <h3 className="text-lg sm:text-xl font-medium mb-2">
+              No dishes available
+            </h3>
             <p className={`${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
               Check back later for delicious options.
             </p>

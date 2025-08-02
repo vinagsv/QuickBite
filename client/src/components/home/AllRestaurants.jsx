@@ -96,7 +96,7 @@ const AllRestaurants = () => {
       <div
         className={`min-h-screen ${themeClasses} transition-all duration-500`}
       >
-        <div className="flex items-center justify-center min-h-screen">
+        <div className="flex items-center justify-center min-h-screen px-4">
           <div className="text-center">
             <Utensils
               className={`w-16 h-16 mx-auto mb-4 ${
@@ -130,42 +130,44 @@ const AllRestaurants = () => {
 
   return (
     <div className={`min-h-screen ${themeClasses} transition-all duration-500`}>
-      {/* Background decorations */}
+      {/* Background decorations - responsive */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-orange-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-96 right-10 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-gradient-to-r from-yellow-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-r from-orange-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-96 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-purple-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-1/2 w-56 h-56 sm:w-80 sm:h-80 bg-gradient-to-r from-yellow-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-3">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        {/* Header - mobile responsive */}
+        <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 mb-6 sm:mb-8">
+          <div className="flex items-start space-x-3 min-w-0 flex-1">
+            <div className="flex-shrink-0">
               <div className="p-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl">
-                <Utensils className="w-6 h-6 text-white" />
+                <Utensils className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <div>
-                <h1 className="text-3xl font-bold">All Restaurants</h1>
-                <p
-                  className={`text-sm ${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  Discover amazing restaurants near you
-                </p>
-              </div>
+            </div>
+            <div className="min-w-0 flex-1">
+              <h1 className="text-lg sm:text-3xl font-bold leading-tight break-words">
+                All Restaurants
+              </h1>
+              <p
+                className={`text-xs sm:text-sm mt-1 break-words ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                Discover restaurants near you
+              </p>
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="flex items-center space-x-6">
+          {/* Stats - responsive layout */}
+          <div className="flex items-center justify-start sm:justify-center space-x-4 sm:space-x-6 flex-shrink-0">
             <div className="flex items-center space-x-2">
-              <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg">
-                <Award className="w-4 h-4 text-white" />
+              <div className="p-1.5 sm:p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg">
+                <Award className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
               </div>
               <div>
-                <span className="font-bold text-lg">
+                <span className="font-bold text-base sm:text-lg">
                   {processedRestaurants.length}
                 </span>
                 <p
@@ -178,11 +180,11 @@ const AllRestaurants = () => {
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="p-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg">
-                <TrendingUp className="w-4 h-4 text-white" />
+              <div className="p-1.5 sm:p-2 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg">
+                <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
               </div>
               <div>
-                <span className="font-bold text-lg">
+                <span className="font-bold text-base sm:text-lg">
                   {processedRestaurants.filter((r) => r.popular).length}
                 </span>
                 <p
@@ -197,30 +199,30 @@ const AllRestaurants = () => {
           </div>
         </div>
 
-        {/* Restaurant Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Restaurant Grid - responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {processedRestaurants.map((rest, index) => (
             <div
               key={rest.id || index}
               onClick={() => handleRestaurantClick(rest)}
-              className={`p-6 rounded-3xl border ${cardClasses} backdrop-blur-sm hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group`}
+              className={`p-4 sm:p-6 rounded-2xl sm:rounded-3xl border ${cardClasses} backdrop-blur-sm hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group`}
             >
               <div className="relative mb-4">
-                <div className="w-full h-48 rounded-2xl overflow-hidden shadow-md">
+                <div className="w-full h-40 sm:h-48 rounded-xl sm:rounded-2xl overflow-hidden shadow-md">
                   <img
                     src={rest.image}
                     alt={rest.name}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-40 sm:h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                     onError={(e) => (e.target.src = "/assets/norestaurant.png")}
                   />
                 </div>
                 {rest.popular && (
-                  <div className="absolute top-3 right-3 w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-                    <Star className="w-4 h-4 text-white" />
+                  <div className="absolute top-2 sm:top-3 right-2 sm:right-3 w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                    <Star className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                   </div>
                 )}
-                <div className="absolute bottom-3 left-3 right-3 bg-black/50 backdrop-blur-sm rounded-xl p-2">
-                  <div className="flex items-center justify-between text-white text-sm">
+                <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 bg-black/50 backdrop-blur-sm rounded-xl p-2">
+                  <div className="flex items-center justify-between text-white text-xs sm:text-sm">
                     <div className="flex items-center space-x-1">
                       <ChefHat className="w-3 h-3" />
                       <span>{rest.menuCount} dishes</span>
@@ -235,12 +237,12 @@ const AllRestaurants = () => {
 
               <div className="space-y-3">
                 <div>
-                  <h3 className="font-bold text-xl group-hover:text-orange-500 transition-colors duration-300">
+                  <h3 className="font-bold text-lg sm:text-xl group-hover:text-orange-500 transition-colors duration-300 line-clamp-1">
                     {rest.name}
                   </h3>
                   {rest.description && (
                     <p
-                      className={`text-sm mt-1 ${
+                      className={`text-xs sm:text-sm mt-1 line-clamp-2 ${
                         isDarkMode ? "text-gray-300" : "text-gray-700"
                       }`}
                     >
@@ -249,11 +251,13 @@ const AllRestaurants = () => {
                   )}
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
+                <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+                  <div className="flex items-center space-x-3 sm:space-x-4">
                     <div className="flex items-center space-x-1">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                      <span className="font-bold">{rest.rating}</span>
+                      <span className="font-bold text-sm sm:text-base">
+                        {rest.rating}
+                      </span>
                     </div>
                     {rest.location && (
                       <div className="flex items-center space-x-1">
@@ -263,7 +267,7 @@ const AllRestaurants = () => {
                           }`}
                         />
                         <span
-                          className={`text-sm ${
+                          className={`text-xs sm:text-sm truncate max-w-24 sm:max-w-none ${
                             isDarkMode ? "text-gray-400" : "text-gray-500"
                           }`}
                         >
@@ -274,17 +278,17 @@ const AllRestaurants = () => {
                   </div>
                 </div>
 
-                {/* Restaurant Stats */}
+                {/* Restaurant Stats - mobile optimized */}
                 <div
                   className={`pt-3 border-t ${
                     isDarkMode ? "border-gray-700/50" : "border-gray-200/50"
                   }`}
                 >
-                  <div className="flex items-center justify-between text-sm">
-                    <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-between text-xs sm:text-sm">
+                    <div className="flex items-center space-x-2 sm:space-x-4">
                       <div className="flex items-center space-x-1">
                         <Utensils
-                          className={`w-4 h-4 ${
+                          className={`w-3 h-3 sm:w-4 sm:h-4 ${
                             isDarkMode ? "text-gray-400" : "text-gray-500"
                           }`}
                         />
@@ -298,7 +302,7 @@ const AllRestaurants = () => {
                       </div>
                       {rest.popular && (
                         <div className="flex items-center space-x-1">
-                          <TrendingUp className="w-4 h-4 text-green-500" />
+                          <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
                           <span className="text-green-500 font-medium">
                             Popular
                           </span>
@@ -306,8 +310,10 @@ const AllRestaurants = () => {
                       )}
                     </div>
                     <div className="flex items-center space-x-1 text-orange-500">
-                      <span className="text-sm font-medium">View Menu</span>
-                      <ArrowLeft className="w-4 h-4 rotate-180" />
+                      <span className="text-xs sm:text-sm font-medium">
+                        View Menu
+                      </span>
+                      <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 rotate-180" />
                     </div>
                   </div>
                 </div>
@@ -316,16 +322,22 @@ const AllRestaurants = () => {
           ))}
         </div>
 
-        {/* Empty state */}
+        {/* Empty state - mobile responsive */}
         {!loading && processedRestaurants.length === 0 && (
-          <div className="text-center py-16">
+          <div className="text-center py-12 sm:py-16 px-4">
             <Utensils
-              className={`w-16 h-16 mx-auto mb-4 ${
+              className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 ${
                 isDarkMode ? "text-gray-600" : "text-gray-400"
               }`}
             />
-            <h3 className="text-xl font-medium mb-2">No restaurants found</h3>
-            <p className={`${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+            <h3 className="text-lg sm:text-xl font-medium mb-2">
+              No restaurants found
+            </h3>
+            <p
+              className={`text-sm sm:text-base ${
+                isDarkMode ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
               We're working to add more restaurants to your area.
             </p>
           </div>
