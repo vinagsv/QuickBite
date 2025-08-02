@@ -21,6 +21,23 @@ const signinToken = (id) => {
   });
 };
 
+// const createSendToken = (user, statusCode, res) => {
+//   const token = signinToken(user._id);
+//   const cookieOptions = {
+//     expires: new Date(
+//       Date.now() + process.env.JWT_COOKIES_EXPIRES_IN * 24 * 60 * 60 * 1000
+//     ),
+//     httpOnly: true,
+//   };
+//   res.cookie("jwt", token, cookieOptions);
+//   user.password = undefined;
+//   res.status(statusCode).json({
+//     status: "Success",
+//     token,
+//     user,
+//   });
+// };
+
 const createSendToken = (user, statusCode, res) => {
   const token = signinToken(user._id);
   const cookieOptions = {
@@ -28,7 +45,10 @@ const createSendToken = (user, statusCode, res) => {
       Date.now() + process.env.JWT_COOKIES_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    secure: process.env.NODE_ENV === "production", // true in production
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // CRITICAL: 'none' for cross-site
   };
+
   res.cookie("jwt", token, cookieOptions);
   user.password = undefined;
   res.status(statusCode).json({
