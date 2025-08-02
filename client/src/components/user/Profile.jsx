@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import LoadingSpinner from "../Loadingspinner";
+import LoadingSpinner from "../LoadingSpinner";
 import moment from "moment";
 import { Edit, X, ShoppingCart } from "lucide-react";
 
