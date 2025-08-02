@@ -20,6 +20,12 @@ const menuItemSchema = new mongoose.Schema({
     enum: ["veg", "nonveg"],
     required: true,
   },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5,
+    default: 0,
+  },
 });
 
 const restaurantSchema = new mongoose.Schema({
@@ -34,6 +40,12 @@ const restaurantSchema = new mongoose.Schema({
   description: String,
   location: String,
   image: String,
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5,
+    default: 0,
+  },
   menu: [menuItemSchema],
 });
 

@@ -304,7 +304,7 @@
     "name": "Thalassery Kitchen",
     "description": "Authentic Kerala cuisine restaurant.",
     "location": "HSR Layout, Bangalore",
-    "image": "https://github.com/vinagsv/QuickBite/blob/main/server/public/restaurants/thalassery.png?raw=true",
+    "image": "https://raw.githubusercontent.com/vinagsv/QuickBite/refs/heads/main/server/public/restaurants/Thalassery-Kitchen.png",
     "rating": 4.3,
     "menu": [
       {
