@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLogin } from "../../store/Users/user-action";
 import { toast } from "react-toastify";
@@ -28,17 +28,46 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  // Add refs to track if we've already handled the navigation
+  const hasNavigated = useRef(false);
+  const prevAuthenticated = useRef(isAuthenticated);
+
   useEffect(() => {
+    // Handle errors
     if (errors) {
       toast.error(errors);
-    } else if (isAuthenticated) {
-      toast.success("User logged in Successfully");
-      navigate("/");
     }
+
+    // Handle successful authentication with better logic
+    if (
+      isAuthenticated &&
+      !prevAuthenticated.current &&
+      !hasNavigated.current
+    ) {
+      hasNavigated.current = true;
+      toast.success("User logged in Successfully");
+
+      // Use setTimeout to ensure state updates are complete
+      setTimeout(() => {
+        navigate("/", { replace: true });
+      }, 100);
+    }
+
+    // Update the previous authenticated state
+    prevAuthenticated.current = isAuthenticated;
   }, [isAuthenticated, errors, navigate]);
+
+  // Reset navigation flag when component unmounts
+  useEffect(() => {
+    return () => {
+      hasNavigated.current = false;
+    };
+  }, []);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    // Reset navigation flag before new login attempt
+    hasNavigated.current = false;
     dispatch(getLogin({ email, password }));
   };
 

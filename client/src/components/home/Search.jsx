@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllRestaurants } from "../../store/Restaurant/restaurant-action";
@@ -6,6 +7,14 @@ import { Search as SearchIcon, Utensils, ChefHat, Loader2 } from "lucide-react";
 
 const Search = ({ isDarkMode }) => {
   const [query, setQuery] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [suggestionPosition, setSuggestionPosition] = useState({
+    top: 0,
+    left: 0,
+    width: 0,
+  });
+  const searchRef = useRef(null);
+  const inputRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { allDishes, loading, error } = useSelector(
@@ -19,13 +28,69 @@ const Search = ({ isDarkMode }) => {
     }
   }, [dispatch, allDishes]);
 
+  // Update suggestion position when input position changes
+  useEffect(() => {
+    if (showSuggestions && inputRef.current) {
+      const rect = inputRef.current.getBoundingClientRect();
+      setSuggestionPosition({
+        top: rect.bottom + window.scrollY + 4, // 4px gap
+        left: rect.left + window.scrollX,
+        width: rect.width,
+      });
+    }
+  }, [showSuggestions, query]);
+
+  // Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowSuggestions(false);
+      }
+    };
+
+    const handleScroll = () => {
+      if (showSuggestions) {
+        setShowSuggestions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("scroll", handleScroll, true);
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("scroll", handleScroll, true);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [showSuggestions]);
+
   const handleSelect = (item) => {
+    console.log("Selecting item:", item); // Debug log
+
+    setQuery("");
+    setShowSuggestions(false);
+
     if (item.type === "restaurant") {
+      console.log("Navigating to restaurant:", item.id); // Debug log
       navigate(`/restaurant/${item.id}`, {
         state: { restaurant: item },
       });
     } else if (item.type === "food") {
+      console.log("Navigating to food:", item.name); // Debug log
       navigate(`/foods/${encodeURIComponent(item.name)}`);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    setShowSuggestions(value.length > 0);
+  };
+
+  const handleInputFocus = () => {
+    if (query.length > 0) {
+      setShowSuggestions(true);
     }
   };
 
@@ -41,6 +106,7 @@ const Search = ({ isDarkMode }) => {
       if (!restaurantMap.has(dish.restaurantId)) {
         restaurantMap.set(dish.restaurantId, {
           id: dish.restaurantId,
+          _id: dish.restaurantId, // Add _id for navigation
           name: dish.restaurantName || "Unknown Restaurant",
         });
       }
@@ -51,6 +117,7 @@ const Search = ({ isDarkMode }) => {
       .filter((r) => r.name.toLowerCase().includes(lowerQuery))
       .map((r) => ({
         id: r.id,
+        _id: r._id,
         name: r.name,
         type: "restaurant",
       }));
@@ -61,10 +128,18 @@ const Search = ({ isDarkMode }) => {
         dish.name.toLowerCase().includes(lowerQuery) &&
         !matchedFoods.some((f) => f.name === dish.name)
       ) {
-        matchedFoods.push({ name: dish.name, type: "food" });
+        matchedFoods.push({
+          name: dish.name,
+          type: "food",
+          _id: dish._id, // Add dish ID for potential future use
+        });
       }
     });
 
+    console.log(
+      "Generated suggestions:",
+      [...matchedRestaurants, ...matchedFoods].slice(0, 10)
+    ); // Debug log
     return [...matchedRestaurants, ...matchedFoods].slice(0, 10);
   };
 
@@ -75,12 +150,66 @@ const Search = ({ isDarkMode }) => {
     : "bg-white/70 border-gray-300/50 text-gray-900 placeholder-gray-500";
 
   const suggestionItemClasses = isDarkMode
-    ? "hover:bg-gray-700 text-white"
-    : "hover:bg-gray-100 text-gray-900";
+    ? "hover:bg-gray-700/80 text-white"
+    : "hover:bg-gray-100/80 text-gray-900";
 
   const suggestionBoxClasses = isDarkMode
-    ? "bg-gray-800 text-white"
-    : "bg-white text-gray-900";
+    ? "bg-gray-800/50 text-white border-gray-700/50"
+    : "bg-white/70 text-gray-900 border-gray-200/50";
+
+  // Suggestions dropdown component
+  const SuggestionsDropdown = () => {
+    if (!showSuggestions || suggestions.length === 0) return null;
+
+    return createPortal(
+      <div
+        className={`fixed rounded-lg shadow-2xl border backdrop-blur-md ${suggestionBoxClasses}`}
+        style={{
+          top: `${suggestionPosition.top}px`,
+          left: `${suggestionPosition.left}px`,
+          width: `${suggestionPosition.width}px`,
+          zIndex: 999999,
+          maxHeight: "300px",
+          overflowY: "auto",
+        }}
+      >
+        {suggestions.map((item, idx) => (
+          <div
+            key={`${item.type}-${item.name || item.id}-${idx}`}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log("Clicked item:", item); // Debug log
+              handleSelect(item);
+            }}
+            onMouseDown={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+            className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-all duration-200 first:rounded-t-lg last:rounded-b-lg ${suggestionItemClasses}`}
+            style={{ userSelect: "none" }}
+          >
+            {item.type === "restaurant" ? (
+              <ChefHat className="w-4 h-4 text-blue-500 flex-shrink-0" />
+            ) : (
+              <Utensils className="w-4 h-4 text-green-500 flex-shrink-0" />
+            )}
+            <span className="truncate flex-1">{item.name}</span>
+            <span
+              className={`text-xs px-2 py-1 rounded-full ${
+                item.type === "restaurant"
+                  ? "bg-blue-500/10 text-blue-500"
+                  : "bg-green-500/10 text-green-500"
+              }`}
+            >
+              {item.type === "restaurant" ? "Restaurant" : "Food"}
+            </span>
+          </div>
+        ))}
+      </div>,
+      document.body
+    );
+  };
 
   if (loading && (!allDishes || allDishes.length === 0)) {
     return (
@@ -92,8 +221,9 @@ const Search = ({ isDarkMode }) => {
 
   if (error) {
     return (
-      <div className="relative w-80">
+      <div ref={searchRef} className="relative w-80">
         <div
+          ref={inputRef}
           className={`flex items-center border rounded-2xl px-4 py-2 shadow backdrop-blur-sm ${inputClasses}`}
         >
           <SearchIcon
@@ -106,11 +236,12 @@ const Search = ({ isDarkMode }) => {
             placeholder="Search for food or restaurants..."
             className="w-full outline-none bg-transparent"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={handleInputChange}
+            onFocus={handleInputFocus}
           />
         </div>
         <div
-          className={`absolute z-50 mt-2 w-full rounded-lg shadow-xl p-4 ${suggestionBoxClasses}`}
+          className={`absolute z-[999999] mt-2 w-full rounded-lg shadow-2xl border backdrop-blur-md p-4 ${suggestionBoxClasses}`}
         >
           <p
             className={`text-sm ${
@@ -131,8 +262,9 @@ const Search = ({ isDarkMode }) => {
   }
 
   return (
-    <div className="relative w-80">
+    <div ref={searchRef} className="relative w-80">
       <div
+        ref={inputRef}
         className={`flex items-center border rounded-2xl px-4 py-2 shadow backdrop-blur-sm ${inputClasses}`}
       >
         <SearchIcon
@@ -145,29 +277,12 @@ const Search = ({ isDarkMode }) => {
           placeholder="Search for food or restaurants..."
           className="w-full outline-none bg-transparent"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleInputChange}
+          onFocus={handleInputFocus}
         />
       </div>
-      {suggestions.length > 0 && (
-        <div
-          className={`absolute z-50 mt-2 w-full rounded-lg shadow-xl ${suggestionBoxClasses}`}
-        >
-          {suggestions.map((item, idx) => (
-            <div
-              key={idx}
-              onClick={() => handleSelect(item)}
-              className={`flex items-center gap-3 px-4 py-2 cursor-pointer ${suggestionItemClasses}`}
-            >
-              {item.type === "restaurant" ? (
-                <ChefHat className="w-4 h-4 text-blue-500" />
-              ) : (
-                <Utensils className="w-4 h-4 text-green-500" />
-              )}
-              <span className="truncate">{item.name}</span>
-            </div>
-          ))}
-        </div>
-      )}
+
+      <SuggestionsDropdown />
     </div>
   );
 };

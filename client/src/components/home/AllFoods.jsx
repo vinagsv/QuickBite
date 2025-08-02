@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllRestaurants } from "../../store/Restaurant/restaurant-action";
+import {
+  fetchAllRestaurants,
+  fetchAllRestaurantsData,
+} from "../../store/Restaurant/restaurant-action";
 import { useTheme } from "../../context/ThemeContext";
 import { useCart } from "./Checkout";
 import {
@@ -19,7 +22,7 @@ const AllFoods = () => {
   const { isDarkMode } = useTheme();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { allDishes, loading, error } = useSelector(
+  const { restaurants, loading, error } = useSelector(
     (state) => state.restaurant
   );
   const { addToCart, removeFromCart, cart } = useCart();
@@ -27,19 +30,23 @@ const AllFoods = () => {
 
   useEffect(() => {
     dispatch(fetchAllRestaurants());
+    dispatch(fetchAllRestaurantsData());
   }, [dispatch]);
 
-  const filteredDishes = allDishes
-    .map((dish) => ({
-      ...dish,
-      id: dish._id,
-      restaurantName: dish.restaurantName || "Unknown Restaurant",
-      image:
-        dish.image && dish.image !== "" ? dish.image : "/assets/nofood.png",
-      trending: dish.rating >= 4.5,
-      type:
-        dish.type || (dish.ingredients?.includes("meat") ? "nonveg" : "veg"),
-    }))
+  const filteredDishes = restaurants
+    .flatMap((restaurant) =>
+      (restaurant.menu || []).map((dish) => ({
+        ...dish,
+        id: dish._id,
+        restaurantName: restaurant.name || "Unknown Restaurant",
+        image:
+          dish.image && dish.image !== "" ? dish.image : "/assets/nofood.png",
+        rating: dish.rating || 4.0,
+        trending: dish.rating >= 4.5,
+        // Fix the type determination logic to match Restaurant.jsx
+        type: dish.ingredients === "veg" ? "veg" : "nonveg",
+      }))
+    )
     .filter((dish) => {
       if (filterType === "all") return true;
       if (filterType === "veg") return dish.type === "veg";
@@ -100,7 +107,10 @@ const AllFoods = () => {
               {error}
             </p>
             <button
-              onClick={() => dispatch(fetchAllRestaurants())}
+              onClick={() => {
+                dispatch(fetchAllRestaurants());
+                dispatch(fetchAllRestaurantsData());
+              }}
               className="px-6 py-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-2xl hover:from-orange-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               Try Again

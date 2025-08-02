@@ -37,7 +37,7 @@ const Nav = () => {
 
   return (
     <nav
-      className={`${themeClasses} backdrop-blur-xl border-b transition-all duration-500`}
+      className={`${themeClasses} backdrop-blur-xl border-b transition-all duration-500 relative z-50`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -72,8 +72,8 @@ const Nav = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-3">
-            {/* Search */}
-            <div className="hidden md:block">
+            {/* Search - Give it proper space and z-index */}
+            <div className="hidden md:block relative" style={{ zIndex: 10000 }}>
               <Search isDarkMode={isDarkMode} />
             </div>
 

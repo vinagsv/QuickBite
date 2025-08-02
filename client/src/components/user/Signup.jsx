@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -34,14 +34,23 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  // Add refs to track if we've already handled the navigation
+  const hasNavigated = useRef(false);
+  const prevAuthenticated = useRef(isAuthenticated);
+
   const { name, email, password, passwordConfirm, phoneNumber } = user;
 
   const submitHandler = (e) => {
     e.preventDefault();
+
+    // Reset navigation flag before new signup attempt
+    hasNavigated.current = false;
+
     if (password !== passwordConfirm) {
       toast.error("Passwords do not match");
       return;
     }
+
     dispatch(getSignup(user));
   };
 
@@ -50,14 +59,37 @@ const Signup = () => {
   };
 
   useEffect(() => {
+    // Handle errors
     if (errors && errors.length > 0) {
       toast.error(errors);
       dispatch(userActions.clearError());
-    } else if (isAuthenticated) {
-      toast.success("User signup successfully");
-      navigate("/");
     }
+
+    // Handle successful authentication with better logic
+    if (
+      isAuthenticated &&
+      !prevAuthenticated.current &&
+      !hasNavigated.current
+    ) {
+      hasNavigated.current = true;
+      toast.success("User signup successfully");
+
+      // Use setTimeout to ensure state updates are complete
+      setTimeout(() => {
+        navigate("/", { replace: true });
+      }, 100);
+    }
+
+    // Update the previous authenticated state
+    prevAuthenticated.current = isAuthenticated;
   }, [isAuthenticated, errors, dispatch, navigate]);
+
+  // Reset navigation flag when component unmounts
+  useEffect(() => {
+    return () => {
+      hasNavigated.current = false;
+    };
+  }, []);
 
   const themeClasses = isDarkMode
     ? "bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white"
